@@ -1,18 +1,22 @@
-package com.example.glosoria.model;
+package com.example.glosoria.Enteties;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "cards")
 
 public class Card {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
     private String langOne;
     private String langTwo;
     private int timesWrong;
     private int timesRight;
 
-    public Card(String langOne, String langTwo, int timesWrong, int timesRight) {
-        this.langOne = langOne;
-        this.langTwo = langTwo;
-        this.timesWrong = 0;
-        this.timesRight = 0;
-    }
+
 
     public String getLangOne() {
         return langOne;

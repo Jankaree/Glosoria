@@ -1,12 +1,24 @@
-package com.example.glosoria.model;
+package com.example.glosoria.Enteties;
+
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "users")
 
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     private String username;
 
     private String password;
 
-    private Deck[] decks;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Deck> decks = new ArrayList<>();
 
     public String getUsername() {
         return username;
